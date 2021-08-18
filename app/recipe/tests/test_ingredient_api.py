@@ -1,6 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.core.exceptions import AppRegistryNotReady
-from django.http import response
 from django.urls import reverse
 from django.test import TestCase
 
