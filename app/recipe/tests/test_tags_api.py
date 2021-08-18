@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.test import TestCase
-from django.utils import http
 
 from rest_framework import status
 from rest_framework.test import APIClient
@@ -42,21 +41,21 @@ class PrivateTagsApiTests(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(
             'test@testakinon.com',
-            'password123'
+            'password123',
         )
-        self.client = APIClient
+        self.client = APIClient()
         self.client.force_authenticate(self.user)
 
     def test_retrieve_tags(self):
         """
             Test retrieve tags
         """
-        Tag.objects().create(user=self.user, name='Vegan')
+        Tag.objects.create(user=self.user, name='Vegan')
         Tag.objects.create(user=self.user, name='Dessert')
 
         response = self.client.get(TAGS_URL)
 
-        tags = Tag.objects.all().order_by('name')
+        tags = Tag.objects.all().order_by('-name')
         serializer = TagSerializer(tags, many=True)
 
         self.assertEqual(
