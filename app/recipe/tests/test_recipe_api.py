@@ -19,6 +19,7 @@ def detail_url(recipe_id):
     """
     return reverse('recipe:recipe-detail', args=[recipe_id])
 
+
 def sample_recipe(user, **params):
     """
         Create and return a sample recipe
@@ -32,17 +33,19 @@ def sample_recipe(user, **params):
 
     return Recipe.objects.create(user=user, **defaults)
 
+
 def sample_tag(user, name='Test Tag'):
     """
         Create and return a sample tag
     """
     return Tag.objects.create(user=user, name=name)
 
+
 def sample_ingredient(user, name='Test Ingredient'):
     """
         Create and return a sample ingredient
     """
-    return Ingredient.objects.create(user=user,name=name)
+    return Ingredient.objects.create(user=user, name=name)
 
 
 class PublicRecipeApiTests(TestCase):
