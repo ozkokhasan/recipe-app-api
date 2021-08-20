@@ -174,7 +174,7 @@ class PrivateRecipeApiTests(TestCase):
         """
             Test creating a recipe with tags
         """
-        tag1 = sample_tag(user=self.user, name= 'Vegan')
+        tag1 = sample_tag(user=self.user, name='Vegan')
         tag2 = sample_tag(user=self.user, name='Dessert')
         payload = {
             'title': 'Avocado lime cheesecake',
