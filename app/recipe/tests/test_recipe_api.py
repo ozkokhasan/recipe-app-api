@@ -67,7 +67,7 @@ class PrivateRecipeApiTests(TestCase):
         sample_recipe(user=self.user)
         sample_recipe(user=self.user)
 
-        response = Recipe.client.get(RECIPES_URL)
+        response = self.client.get(RECIPES_URL)
         recipes = Recipe.objects.all().order_by('-id')
         serializer = RecipeSerializer(recipes, many=True)
 
